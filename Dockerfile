@@ -11,6 +11,9 @@ COPY . /var/www/html
 # For example, if you're using MySQL with PHP
 RUN docker-php-ext-install mysqli pdo_mysql
 
+# Install Vim
+RUN apt-get update && apt-get install -y vim
+
 # Enable Apache modules
 RUN a2enmod rewrite
 

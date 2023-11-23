@@ -1,0 +1,29 @@
+apiVersion: v1
+kind: Service
+metadata:
+  finalizers:
+  - service.kubernetes.io/load-balancer-cleanup
+  labels:
+    app: web
+    pod-template-hash: 795bcb85b
+  name: web-795bcb85b-l4vvq
+  namespace: web
+spec:
+  allocateLoadBalancerNodePorts: true
+  clusterIP: 198.50.252.10
+  clusterIPs:
+  - 198.50.252.10
+  externalTrafficPolicy: Cluster
+  internalTrafficPolicy: Cluster
+  ipFamilies:
+  - IPv4
+  ipFamilyPolicy: SingleStack
+  ports:
+  - nodePort: 30333
+    port: 80
+    protocol: TCP
+    targetPort: 80
+  selector:
+    app: web
+    pod-template-hash: 795bcb85b
+  type: LoadBalancer
