@@ -1,6 +1,6 @@
 <?php
 
-$dbhost = "localhost";
+$dbhost = "mysql";
 $username = "root";
 $password = "123456";
 $dbname = "clinic_mgmt";
