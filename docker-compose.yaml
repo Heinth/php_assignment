@@ -1,0 +1,28 @@
+version: '3'
+
+services:
+  mysql:
+    image: Dockerfile.mysql
+    container_name: mysql_container
+    environment:
+      MYSQL_ROOT_PASSWORD: 123456
+    ports:
+      - "3306:3306"
+    networks:
+      - my_network
+
+  php-apache:
+    build:
+      context: .
+      dockerfile: Dockerfile.php-apache
+    container_name: php_apache_container
+    ports:
+      - "8010:80"
+    networks:
+      - my_network
+    depends_on:
+      - mysql
+
+networks:
+  my_network:
+    driver: bridge
